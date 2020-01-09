@@ -1,59 +1,6 @@
 {
-  "users": [
-    {
-      "id": "1",
-      "email": "user1@exemple.com",
-      "phones": [
-        {
-          "id": 1,
-          "num": "0601010101",
-          "type": "bureau"
-        },
-        {
-          "id": 2,
-          "num": "0602020202",
-          "type": "bureau2"
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "email": "user2@exemple.com",
-      "phones": [
-        {
-          "id": 1,
-          "num": "0701010101",
-          "type": "bureau"
-        },
-        {
-          "id": 2,
-          "num": "0702020202",
-          "type": "bureau2"
-        },
-        {
-          "id": 3,
-          "num": "0703030303",
-          "type": "bureau3"
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "email": "user3@exemple.com",
-      "phones": []
-    }
-  ],
-  "phones": [
-    {
-      "id": 1,
-      "num": "0611111111",
-      "type": "Bureau"
-    },
-    {
-      "id": 2,
-      "num": "0622222222",
-      "type": "Bureau2"
-    }
-  ],
-  "email": {"email": "renan.alibert@exemple.com" }
+	"jours":[
+		{"meteo": "pluie", "nom": "lundi"}
+		{"meteo": "soleil", "nom": "mardi"}
+	]
 }
