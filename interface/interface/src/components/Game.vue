@@ -12,6 +12,9 @@
                 </div>
             </div>
             <div class="arena">
+                <div class="hitbox">
+                    <img class="monster" src="../assets/martian.png">
+                </div>
             </div>
         </div>
         <div class="bonus_panel">
@@ -104,6 +107,8 @@ export default {
     background-size: 150%;
     flex: 4;
 }
+.hitbox
+{}
 .bonus_panel
 {
     flex: 1.5;
