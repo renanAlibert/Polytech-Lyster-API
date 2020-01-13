@@ -21,12 +21,12 @@ app.get('/add', (req, res) => {
 // Send Message - POST Routing -
 app.post('/message', (req, res) => {
     //recuperation du username et du message envoyé au serveur
-    let {username, message } = req.body;
-    console.dir(req.body);
+    let {username, message } = req.query;
+    
     //Ajout du message dans la liste des messages
     messages.push({username, message});
     //confirmation d'ajout
-    res.send(req.body);
+    res.send("ajoute");
 });
 // liste des Messages - GET Routing -
 app.get('/message', (req, res) => {
