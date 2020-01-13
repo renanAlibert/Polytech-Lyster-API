@@ -1,9 +1,17 @@
 <template>
     <div class="game">
-        <div class="arena">
-            <h2>ZONE DE COMBAT</h2>
+        <div class="game_main">
             <div class="stats">
-                
+                <div id="stat stat_gold">
+                    <label class="lbl_gold_txt">Gold :</label>
+                    <label class="lbl_gold">125 000 000 000 !!!</label>
+                </div>
+                <div id="stat stat_dps">
+                    <label class="lbl_dps_txt">Damage per second :</label>
+                    <label class="lbl_dps">125 /s</label>
+                </div>
+            </div>
+            <div class="arena">
             </div>
         </div>
         <div class="bonus_panel">
@@ -35,6 +43,19 @@
                 <h3>BONUS ACQUIS</h3>
                 <div class="bonus_list">
                     <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
+                    <BonusItem description="Description" price="150"/>
                 </div>
             </div>
         </div>
@@ -56,16 +77,31 @@ export default {
 <style>
 .game
 {
-border: solid black 2px;
+    border: solid black 2px;
 
     height: 80vh;
     display: flex;
     flex-direction: row;
 }
+.game_main
+{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+.stats
+{
+    font-size: 120%;
+    display: inline-flex;
+    justify-content: space-around;
+}
+.stat
+{
+}
 .arena
 {
-    /*background: url("./../assets/dank_landscape.jpg") center no-repeat;
-    background-size: 150%;*/
+    background: url("./../assets/fantasy_forest.jpg") center no-repeat;
+    background-size: 150%;
     flex: 4;
 }
 .bonus_panel
@@ -73,19 +109,17 @@ border: solid black 2px;
     flex: 1.5;
     display: flex;
     flex-direction: column;
-
-    border-left: solid black 2px;
 }
 .bonus_shop, .bonus_loot
 {
-    height: 50%;
-    box-sizing: border-box;
+    max-height: 50%;
     display: flex;
     flex-direction: column;
 }
-h3 
+.bonus_loot > h3, .bonus_shop > h3 
 {
-    background-color: gold;
+    margin: 0px;
+    padding: 0px;
 }
 .bonus_list
 {
@@ -94,9 +128,20 @@ h3
 
     display: flex;
     flex-direction: column;
+    margin: 0px 1px 0px 1px;
 }
 .bonus_list::-webkit-scrollbar
 {
-    display: none;
+    /*display: none;*/
+    width: 15px;
+    /*background-color: green;*/
+    border-radius: 25vh;
+}
+.bonus_list::-webkit-scrollbar-thumb
+{
+    /*display: none;*/
+    width: 5px;
+    background-color: grey;
+    border-radius: 25vh;
 }
 </style>
