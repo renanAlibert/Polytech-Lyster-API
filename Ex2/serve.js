@@ -93,7 +93,41 @@ app.get('/tuples', (req, res) => {
 app.get('/somme', (req, res) => {
     //Renvoyer la liste de tous les messages
     let somme = 0;
-    tuples.forEach(element => somme += parseInt(element.val1,10) + parseInt(element.val2,10));
+    let strike = 0; // Condition de strike
+    let spare = 0; // Condition de spare
+
+    for (var i = 0; i < tuples.length; i++) {
+
+        var val1 = parseInt(tuples[i].val1,10); // récupération de la première valeur du couple d'entier
+        var val2 = parseInt(tuples[i].val2,10); // récupération de la seconde valeur du couple d'entier
+
+
+        if (i != (tuples.length -1)) // Les strikes et spares ne peuvent pas influer un potentiel "coup suivant" si ils sont faits au dernier coup
+        {   
+            if (val1 == 10) { // Strike
+
+                strike = 1; 
+            
+            } else if ((val1 + val2) == 10) { //Spare
+            
+                spare = 1;
+            
+            }
+
+            if (strike == 1)
+            { // Gestion du score avec un Strike
+                somme += parseInt(tuples[i+1].val1,10) + parseInt(tuples[i+1].val2,10);
+                strike = 0; // Remise a zéro du booléen de gestion du Strike pour les prochains coups
+
+            } else if (spare == 1)
+            { // Gestion du score avec un Spare
+                somme += parseInt(tuples[i+1].val1,10);
+                spare = 0; // Remise a zéro du booléen de gestion du Spare pour les prochains coups
+            }
+        }
+
+        somme += val1 + val2; // Gestion du score de manière générale
+    }
     res.json(somme);
 });
 
