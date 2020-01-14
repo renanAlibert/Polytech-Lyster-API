@@ -1,0 +1,1087 @@
+{
+	"info": {
+		"_postman_id": "cebabf02-fc9d-4a0a-98ce-7ac751bfdd05",
+		"name": "Tuples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Insert for test Ajouter()",
+			"item": [
+				{
+					"name": "Valeurs correctes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=2&val2=3",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "2"
+								},
+								{
+									"key": "val2",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Valeurs non entière",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=12,5&val2=5",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "12,5"
+								},
+								{
+									"key": "val2",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sommes supérieur à 10",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=7&val2=8",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "7"
+								},
+								{
+									"key": "val2",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tuples null",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=null&val2=null",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "null"
+								},
+								{
+									"key": "val2",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Gestion somme strike / spare",
+			"item": [
+				{
+					"name": "Spare 5,5 6,1 OK",
+					"item": [
+						{
+							"name": "Set valeur Spare (1)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+										"exec": [
+											"pm.test(\"response is ok\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reponse egale a ajoute\", function () {\r",
+											"    pm.response.to.have.body(\"ajoute\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:1234/tuples?val1=5&val2=5",
+									"host": [
+										"localhost"
+									],
+									"port": "1234",
+									"path": [
+										"tuples"
+									],
+									"query": [
+										{
+											"key": "val1",
+											"value": "5"
+										},
+										{
+											"key": "val2",
+											"value": "5"
+										}
+									]
+								},
+								"description": "Ajoute de (5,5) et (6,1)"
+							},
+							"response": []
+						},
+						{
+							"name": "Set valeur Spare (2)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a90fb9ea-1017-457a-b148-b031dfd29551",
+										"exec": [
+											"pm.test(\"response is ok\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reponse egale a ajoute\", function () {\r",
+											"    pm.response.to.have.body(\"ajoute\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:1234/tuples?val1=6&val2=1",
+									"host": [
+										"localhost"
+									],
+									"port": "1234",
+									"path": [
+										"tuples"
+									],
+									"query": [
+										{
+											"key": "val1",
+											"value": "6"
+										},
+										{
+											"key": "val2",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Ajoute de (5,5) et (6,1)"
+							},
+							"response": []
+						},
+						{
+							"name": "Get valeur Spare",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d284511e-5368-4a8b-9bde-172b7ba98c31",
+										"exec": [
+											"pm.test(\"response is ok\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"response value is ok\", function () {\r",
+											"     pm.response.to.have.body(\"23\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:1234/somme",
+									"host": [
+										"localhost"
+									],
+									"port": "1234",
+									"path": [
+										"somme"
+									]
+								},
+								"description": "Verifie que la somme est bien de 23 pour tab = (5,5) et (6,1)"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Strike 10,0 6,1 OK",
+					"item": [
+						{
+							"name": "Set valeur Strike (1)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+										"exec": [
+											"pm.test(\"response is ok\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reponse egale a ajoute\", function () {\r",
+											"    pm.response.to.have.body(\"ajoute\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:1234/tuples?val1=10&val2=0",
+									"host": [
+										"localhost"
+									],
+									"port": "1234",
+									"path": [
+										"tuples"
+									],
+									"query": [
+										{
+											"key": "val1",
+											"value": "10"
+										},
+										{
+											"key": "val2",
+											"value": "0"
+										}
+									]
+								},
+								"description": "Ajoute de (5,5) et (6,1)"
+							},
+							"response": []
+						},
+						{
+							"name": "Set valeur Strike (2)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "50cd2e8f-50f3-4cd4-9f23-7ac2018ff822",
+										"exec": [
+											"pm.test(\"response is ok\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reponse egale a ajoute\", function () {\r",
+											"    pm.response.to.have.body(\"ajoute\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:1234/tuples?val1=6&val2=1",
+									"host": [
+										"localhost"
+									],
+									"port": "1234",
+									"path": [
+										"tuples"
+									],
+									"query": [
+										{
+											"key": "val1",
+											"value": "6"
+										},
+										{
+											"key": "val2",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Ajoute de (5,5) et (6,1)"
+							},
+							"response": []
+						},
+						{
+							"name": "Get valeur Strike",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6e983cd7-f01f-4498-bf67-9441d45bda24",
+										"exec": [
+											"pm.test(\"response is ok\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"response value is ok\", function () {\r",
+											"    pm.response.to.have.body(\"24\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:1234/somme",
+									"host": [
+										"localhost"
+									],
+									"port": "1234",
+									"path": [
+										"somme"
+									]
+								},
+								"description": "Verifie que la somme est bien de 23 pour tab = (5,5) et (6,1)"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Gestion max tableau + clear",
+			"item": [
+				{
+					"name": "Set valeur (1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=5&val2=5",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "5"
+								},
+								{
+									"key": "val2",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Ajoute un tuples au tableau du serveur"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (2)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=7&val2=3",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "7"
+								},
+								{
+									"key": "val2",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Ajoute de (5,5) et (6,1)"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (3)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=5&val2=5",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "5"
+								},
+								{
+									"key": "val2",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Ajoute de (5,5) et (6,1)"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (4)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=5&val2=5",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "5"
+								},
+								{
+									"key": "val2",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Ajoute de (5,5) et (6,1)"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (5)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=1&val2=0",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "1"
+								},
+								{
+									"key": "val2",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Ajoute un tuples au tableau du serveur"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (6)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=1&val2=0",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "1"
+								},
+								{
+									"key": "val2",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Ajoute un tuples au tableau du serveur"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (7)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=1&val2=0",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "1"
+								},
+								{
+									"key": "val2",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Ajoute un tuples au tableau du serveur"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (8)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=1&val2=0",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "1"
+								},
+								{
+									"key": "val2",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Ajoute un tuples au tableau du serveur"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (9)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=1&val2=0",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "1"
+								},
+								{
+									"key": "val2",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Ajoute un tuples au tableau du serveur"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (10)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=1&val2=0",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "1"
+								},
+								{
+									"key": "val2",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Ajoute un tuples au tableau du serveur"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (11)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"erreur à l'ajout\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=1&val2=0",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "1"
+								},
+								{
+									"key": "val2",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Ajoute un tuples au tableau du serveur"
+					},
+					"response": []
+				},
+				{
+					"name": "Make clear",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"tableau de tuples nettoyé\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/clear",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"clear"
+							]
+						},
+						"description": "Clear le tableau du serveur"
+					},
+					"response": []
+				},
+				{
+					"name": "Set valeur (1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reponse egale a ajoute\", function () {\r",
+									"    pm.response.to.have.body(\"ajoute\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:1234/tuples?val1=1&val2=0",
+							"host": [
+								"localhost"
+							],
+							"port": "1234",
+							"path": [
+								"tuples"
+							],
+							"query": [
+								{
+									"key": "val1",
+									"value": "1"
+								},
+								{
+									"key": "val2",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Ajoute un tuples au tableau du serveur"
+					},
+					"response": []
+				}
+			],
+			"description": "Test le cas où le tableau est plien et la fonctionalité de clear",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Get Tuples",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df3c14b4-31f6-4a2f-bd67-db6a61cea54b",
+						"exec": [
+							"pm.test('La requête fonctionne',function(){",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,302]);",
+							"});",
+							"",
+							"pm.test(\"L'input a fonctionné\", function () {",
+							"    pm.response.to.have.status(200); ",
+							"});",
+							"",
+							"pm.test('Le resultat est correct',function(){",
+							"    ",
+							"    var value1 = pm.environment.get(\"val1\");",
+							"    var value2 = pm.environment.get(\"val2\");",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.equal();",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:1234/somme",
+					"host": [
+						"localhost"
+					],
+					"port": "1234",
+					"path": [
+						"somme"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				},
+				"description": "Premier test pour voir comment fonctionne les tests unitaires"
+			},
+			"response": []
+		}
+	]
+}
