@@ -14,4 +14,5 @@ script:
 - cd Ex2/
 - npm i
 - node serve.js &
+- cd ..
 - node_modules/.bin/newman run tests/Tuples.postman_collection.json
