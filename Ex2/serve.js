@@ -17,8 +17,9 @@ app.use('/tuples', bodyParser.urlencoded({extended: true}));
 app.get('/', (req, res) => {
     res.end('HomePage');
 });
-app.get('/add', (req, res) => {
-    res.end('add');
+app.get('/clear', (req, res) => {
+    tuples = [];
+    res.end('tableau de tuples nettoyé');
 });
 
 // Send Message - POST Routing -
@@ -130,6 +131,7 @@ app.get('/somme', (req, res) => {
     }
     res.json(somme);
 });
+
 
 // Ecoute sur le port 1234
 app.listen(1234);
