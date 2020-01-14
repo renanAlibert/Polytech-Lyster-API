@@ -1,10 +1,10 @@
 <template>
     <div class="bonus_item">
         <div class="bonus_description">
-            <label>{{description}}</label>
+            <label>Punch +{{punchBonus}} and DPS +{{dpsBonus}}</label>
         </div>
-        <div class="bonus_price"  @click="plusDps(1)">
-            <label>{{price}}</label>
+        <div class="bonus_price"  @click="buyBonus()">
+            <label>{{this.price}}</label>
         </div>
     </div>
 </template>
@@ -22,13 +22,16 @@
     flex-direction: row;
 
     font-size: 110%;
+    transition: border 0.3s;
+}
+.bonus_item:hover
+{
 }
 .bonus_description
 {
     flex: 3;
 
     text-align: left;
-    border-right: solid black 2px;
 }
 .bonus_price
 {
@@ -36,23 +39,49 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: transparent;
+    color: rgb(202, 145, 0);
+    margin: 2px;
+    border-radius: 1vh;
+    border: solid gold 2px;
+
+    transition: 1s;
+}
+.bonus_price:hover
+{
+    transition: 1s;
+    background-color: gold;
+    color: black;
+}
+.bonus_price:active
+{
+    transition: 0s;
+    background-color: yellow;
 }
 </style>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
+    computed: mapGetters(['getGold']),
     props: {
-        description: String,
-        price: Number
+        price: Number,
+        punchBonus: Number,
+        dpsBonus: Number,
     },
     methods: { 
-    ...mapMutations(['addDps']),
+    ...mapMutations(['addDps', 'addPunch', 'subGold']),
 
-    plusDps(i){
-      this.addDps(i);
-    }
+    buyBonus(){
+        if(this.getGold > this.price)
+        {
+            this.addPunch(parseInt(this.punchBonus));
+            this.addDps(parseInt(this.dpsBonus));
+            this.subGold(parseInt(this.price));
+            this.price = this.price * 2;
+        }
+    },
   }
 }
 </script>

@@ -1,8 +1,6 @@
 <template>
   <div class="home">
     <Game/>
-    <img alt="Vue logo" src="../assets/martian.png" />
-    <p>{{gold}} euros</p>
   </div>
 </template>
 

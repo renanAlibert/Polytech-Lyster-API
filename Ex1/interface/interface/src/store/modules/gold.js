@@ -3,7 +3,7 @@ const state = {
 };
 
 const getters = {
-    getgold: (state) => state.gold,
+    getGold: (state) => state.gold,
 };
 
 const actions = {

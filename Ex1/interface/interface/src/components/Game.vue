@@ -2,64 +2,39 @@
     <div class="game">
         <div class="game_main">
             <div class="stats">
-                <div id="stat stat_gold">
-                    <label class="lbl_gold_txt">Vie</label>
-                    <label class="lbl_gold">{{vie}}</label>
+                <div class="stat stat_life">
+                    <label class="lbl_life_txt">Life : </label>
+                    <label class="lbl_life">{{Math.floor(getLife)}}</label>
                 </div>
-                <div id="stat stat_dps">
+                <div class="stat stat_gold">
+                    <label class="lbl_gold_txt">Gold : </label>
+                    <label class="lbl_gold">{{Math.floor(getGold)}}</label>
+                </div>
+                <div class="stat stat_punch">
+                    <label class="lbl_punch_txt">Punch : </label>
+                    <label class="lbl_punch">{{getPunch}}</label>
+                </div>
+                <div class="stat stat_dps">
                     <label class="lbl_dps_txt">Damage per second :</label>
                     <label class="lbl_dps">{{getDps}}</label>
                 </div>
             </div>
             <div class="arena">
-                <LifeBar />
-                <div class="hitbox">
-                    <img class="monster" src="../assets/martian.png">
-                </div>
+                <LifeBar class="monster_lifebar" :filling=((getLife/getTotalLife)*100) />
+                <div class="hitbox" @click="hit()"></div>
             </div>
         </div>
         <div class="bonus_panel">
             <div class="bonus_shop">
                 <h3>BOUTIQUE DE BONUS</h3>
                 <div class="bonus_list">
-                    <BonusItem description="+25% de DPS et Punch damage +30" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
+                    <BonusItem punchBonus=15 dpsBonus=0 price=150 />
+                    <BonusItem punchBonus=5 dpsBonus=2  price=150 />
                 </div>
             </div>
             <div class="bonus_loot">
                 <h3>BONUS ACQUIS</h3>
                 <div class="bonus_list">
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
-                    <BonusItem description="Description" price="150"/>
                 </div>
             </div>
         </div>
@@ -73,33 +48,50 @@ import { mapGetters , mapMutations } from 'vuex';
 
 export default {
   name: "game",
-  computed: mapGetters(['getDps']),
+  computed: mapGetters(['getDps', 'getLife', 'getTotalLife', 'getPunch', 'getGold']),
   components: {
     BonusItem,
     LifeBar
   },
   created(){
     this.dps();
+    this.checkDeath();
   },
   data(){
     return{
-      vie: 1000
     }
   },
   methods: { 
-    ...mapMutations(['addDps']),
+    ...mapMutations(['addDps', 'setLife', 'setTotalLife', 'setPunch', 'addGold', 'subGold']),
+
+    async checkDeath(){
+        for(let i = 0 ; i < 1; i = 0){
+            await new Promise(r => setTimeout(r, 200));
+            if(this.getLife == 0) {
+                this.setTotalLife(this.getTotalLife*10);
+                this.setLife(this.getTotalLife);
+            }
+        }
+    },
 
     async dps(){
       for(let i = 0 ; i < 1; i = 0){
           await new Promise(r => setTimeout(r, 100));
-          this.vie -= this.getDps/10;
+          var nlife = this.getLife - this.getDps/10;
+          this.setLife(nlife);
+          this.addGold(this.getDps/10);
       }
     },
 
     plus10Dps(){
       this.addDps(10);
       this.test = 10;
-    }
+    },
+
+    hit(){
+        this.setLife(this.getLife - this.getPunch);
+        this.addGold(this.getPunch);
+    },
   }
 };
 
@@ -119,6 +111,7 @@ export default {
     flex: 4;
     display: flex;
     flex-direction: column;
+    border-right: solid black 2px;
 }
 .stats
 {
@@ -126,11 +119,45 @@ export default {
     display: inline-flex;
     justify-content: space-around;
 }
+.stat
+{
+    display: flex;
+    flex-direction: column;
+}
 .arena
 {
-    background: url("./../assets/fantasy_forest.jpg") center no-repeat;
-    background-size: 150%;
+    position: relative;
+    background: url("./../assets/space.jpg") center no-repeat;
+    background-size: 200%;
     flex: 4;
+    overflow: hidden;
+}
+.hitbox
+{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    right: 25%;
+    bottom: 25%;
+    height: 50%;
+    width: 50%;
+    background: url("./../assets/ridley.png") center no-repeat;
+    background-size: 100%;
+    transition: 0.05s;
+}
+.hitbox:active
+{
+    width: 46%;
+    left: 27%;
+    right: 27%
+}
+.monster_lifebar
+{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50%;
+    z-index: 1000;
 }
 .bonus_panel
 {
