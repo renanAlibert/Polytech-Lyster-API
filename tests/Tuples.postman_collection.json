@@ -143,6 +143,44 @@
 								"description": "Verifie que la somme est bien de 23 pour tab = (5,5) et (6,1)"
 							},
 							"response": []
+						},
+						{
+							"name": "Clear",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+										"exec": [
+											"pm.test(\"response is ok\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reponse egale a ajoute\", function () {\r",
+											"    pm.response.to.have.body(\"tableau de tuples nettoyé\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:1234/clear",
+									"host": [
+										"localhost"
+									],
+									"port": "1234",
+									"path": [
+										"clear"
+									]
+								},
+								"description": "Clear le tableau du serveur"
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -281,6 +319,44 @@
 									]
 								},
 								"description": "Verifie que la somme est bien de 23 pour tab = (5,5) et (6,1)"
+							},
+							"response": []
+						},
+						{
+							"name": "Clear",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "00124b69-7b1a-44a0-8224-2be2c447f3d2",
+										"exec": [
+											"pm.test(\"response is ok\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reponse egale a ajoute\", function () {\r",
+											"    pm.response.to.have.body(\"tableau de tuples nettoyé\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:1234/clear",
+									"host": [
+										"localhost"
+									],
+									"port": "1234",
+									"path": [
+										"clear"
+									]
+								},
+								"description": "Clear le tableau du serveur"
 							},
 							"response": []
 						}
