@@ -2,12 +2,17 @@
 De la Qualité Logiciel
 
 #Installation du projet
-	git clone [lien .git]
+	git clone [lien .git
+	ouvrir cmd
+	cd Ex2
 	supprimer node_modules
-	ouvrir cmd, cd QualiteLogiciel/db
 	npm i
-	npm run json:server
-	tester en ouvrant localhost:5000
+	node serve.js
+	tester en ouvrant localhost:1234
 
-Bravo !
-Chouette
+
+Projet de :
+Chiem Michael
+SORIN Kévin
+MEUNIER Thibault
+ALIBERT Renan
