@@ -1,3 +1,6 @@
+#Commentaire de Yann Prudent
+L'integration des tests en CI n'intervient que tard dans le projet. C'etait un peu le but de ce TP.
+13/20
 # QualiteLogiciel
 De la Qualité Logiciel
 
