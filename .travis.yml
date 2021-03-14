@@ -14,5 +14,4 @@ script:
 - npm i
 - npm run migrate
 - node index.js &
-- cd ..
 - node_modules/.bin/newman run tests/API_Blog_Voyage_Tests.postman_collection.json
