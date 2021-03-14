@@ -9,7 +9,7 @@
 			"name": "Initialisation",
 			"item": [
 				{
-					"name": "Article",
+					"name": "GET Article",
 					"event": [
 						{
 							"listen": "test",
@@ -58,7 +58,7 @@
 					"response": []
 				},
 				{
-					"name": "Redactor",
+					"name": "GET Redactor",
 					"event": [
 						{
 							"listen": "test",
@@ -91,7 +91,7 @@
 					"response": []
 				},
 				{
-					"name": "Article",
+					"name": "POST Article",
 					"event": [
 						{
 							"listen": "test",
@@ -133,7 +133,7 @@
 					"response": []
 				},
 				{
-					"name": "Redactor",
+					"name": "POST Redactor",
 					"event": [
 						{
 							"listen": "test",
@@ -180,7 +180,7 @@
 			"name": "Article",
 			"item": [
 				{
-					"name": "Article",
+					"name": "GET Article",
 					"event": [
 						{
 							"listen": "test",
@@ -229,7 +229,7 @@
 					"response": []
 				},
 				{
-					"name": "Article",
+					"name": "POST Article",
 					"event": [
 						{
 							"listen": "test",
@@ -271,7 +271,7 @@
 					"response": []
 				},
 				{
-					"name": "Article",
+					"name": "PUT Article",
 					"event": [
 						{
 							"listen": "test",
@@ -402,7 +402,7 @@
 					"response": []
 				},
 				{
-					"name": "Article",
+					"name": "DELETE Article",
 					"event": [
 						{
 							"listen": "test",
@@ -470,7 +470,7 @@
 			"name": "Redactor",
 			"item": [
 				{
-					"name": "Redactor",
+					"name": "GET Redactor",
 					"event": [
 						{
 							"listen": "test",
@@ -514,7 +514,7 @@
 					"response": []
 				},
 				{
-					"name": "Redactor",
+					"name": "POST Redactor",
 					"event": [
 						{
 							"listen": "test",
@@ -556,7 +556,7 @@
 					"response": []
 				},
 				{
-					"name": "Redactor",
+					"name": "PUT Redactor",
 					"event": [
 						{
 							"listen": "test",
@@ -687,7 +687,7 @@
 					"response": []
 				},
 				{
-					"name": "Redactor",
+					"name": "DELETE Redactor",
 					"event": [
 						{
 							"listen": "test",
@@ -755,7 +755,7 @@
 			"name": "Finish",
 			"item": [
 				{
-					"name": "Article",
+					"name": "DELETE Article",
 					"event": [
 						{
 							"listen": "test",
@@ -798,7 +798,7 @@
 					"response": []
 				},
 				{
-					"name": "Redactor",
+					"name": "DELETE Redactor",
 					"event": [
 						{
 							"listen": "test",
