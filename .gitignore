@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Sqlite development file
-#*.development.sqlite
+*.development.sqlite
