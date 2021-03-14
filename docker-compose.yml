@@ -1,0 +1,26 @@
+version: "3.1"
+
+services:
+
+  postgres:
+    image: postgres:9
+    networks:
+    - lyster-back
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      PGDATA: /var/lib/postgresql/data
+    restart: always
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+
+  back:
+    image: lyster-polytech
+    networks:
+    - lyster-back
+    ports:
+    - "3000:3000"
+
+networks:
+    lyster-back:
+
+#docker-compose run back npm run migrate     
