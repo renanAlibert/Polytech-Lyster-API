@@ -130,7 +130,6 @@ module.exports = () => {
 
     router.delete('/:id/article', (req, res) => {
         models.Redactors.findByPk(req.params.id).then(redactor => {
-            console.log(redactor)
             redactor.removeArticles(req.body.id)
             .then(result => {
                 result ? res.sendStatus(204) : res.sendStatus(405);
