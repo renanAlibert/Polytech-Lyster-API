@@ -11,7 +11,8 @@
     "migrate": "npx sequelize db:migrate",
     "migrate:undo": "npx sequelize db:migrate:undo",
     "migrate:status": "npx sequelize db:migrate:status",
-    "migrate:reset": "npx sequelize db:migrate:undo:all"
+    "migrate:reset": "npx sequelize db:migrate:undo:all",
+    "test": "node_modules/.bin/newman run tests/API_Blog_Voyage_Tests.postman_collection.json"
   },
   "repository": {
     "type": "git",
